@@ -8,7 +8,7 @@ from datetime import datetime
 
 
 # Caminho base para salvar os anexos
-destino = Path(r"C:\Users\actct.asilmara\OneDrive - Banco Votorantim S.A\Documentos\Dashs-PLD\ArquivosOutlook")
+destino = Path(r"path_aqui")
 destino.mkdir(parents=True, exist_ok=True)
 
 # Gera a data atual no formato AAAA-MM-DD
