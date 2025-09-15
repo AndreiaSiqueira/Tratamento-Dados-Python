@@ -1,4 +1,4 @@
-#Script para extração de arquivo xlsx anexo em email, tratamento e disponbilização de arquivo em path-sharepoint
+#Script para extração de arquivo xlsx ou csv anexo em email, tratamento e disponbilização de arquivo em path-sharepoint
 # %%
 import win32com.client as win32
 from pathlib import Path
@@ -24,8 +24,8 @@ messages = inbox.Items
 messages.Sort("[ReceivedTime]", True)  # Ordena por data mais recente
 
 # Filtros
-sender_email = "amanda.ferrari@bv.com.br"
-assunto_desejado = "ENC: [EXT] - Relatar resultados (KYC ENTRADA - CIB)"
+sender_email = "email address"
+assunto_desejado = "subject"
 
 # Percorre os e-mails até encontrar o mais recente que corresponde
 for message in messages:
@@ -55,8 +55,8 @@ import pandas as pd
 
 # %%
 data_hoje = datetime.now().strftime("%Y-%m-%d")
-caminho_arquivo = Path(fr"C:\Users\actct.asilmara\OneDrive - Banco Votorantim S.A\Documentos\Dashs-PLD\ArquivosOutlook\pendente_cliente_{data_hoje}.xlsx")
-#"C:\Users\actct.asilmara\OneDrive - Banco Votorantim S.A\Documentos\Dashs-PLD\ArquivosOutlook\pendente_cliente_2025-07-15.xlsx"
+caminho_arquivo = Path(fr"caminho_arquivo_{data_hoje}.xlsx")
+#""
 
 
 # %%
@@ -105,7 +105,7 @@ arquivo.to_csv(caminho_csv, index=False, sep=',')
 print(f"Arquivo salvo em:{caminho_csv}")
 
 # %%
-sharepoint_pasta=Path(r"C:\Users\actct.asilmara\Banco Votorantim S.A\Hub Analytics - Bases\Onboarding\PendentesClientes")
+sharepoint_pasta=Path(r"caminho_sharepoint")
 
 # %
 arquivo.to_csv(sharepoint_pasta / f"PendentesOnboardingClientes2.csv",index=False, sep="," )
